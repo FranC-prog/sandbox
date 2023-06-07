@@ -1,0 +1,299 @@
+--------Clase 1--------
+AYED
+CLASE 1
+Algoritmo: secuencia de pasos computacionales para resolver un problema.
+Un algoritmo es correcto si para c/instancia de problema obtiene la salida esperada. 
+Estructura de datos: manera de almacenar y organizar la información para facilitar el acceso y las modificaciones.
+La mayoría de los algoritmos bajo estudio implican métodos para organizar datos envueltos en la ejecución. Para eso se usan estructuras de datos.
+Análisis de algoritmos: rama de la Ciencia de la Computación que estudia las características de performance de los algoritmos.
+Antes de poder analizar un algoritmo, hay que asegurarse que el problema esté bien planteado y que el algoritmo sea correcto.
+
+De los algoritmos se puede analizar:
+1-	Tiempo de ejecución como función de la entrada – Escalabilidad [T(n)]
+2-	Necesidades de memoria de programa y disco
+3-	Si es paralelizable (resoluble de manera paralela)
+4-	Correctitud
+5-	Claridad y dificultad del approach(dificultad para implementar)
+6-	Robustez(cuan bien maneja casos excepcionales o entradas erróneas, cuan bien tolera la carga extrema)
+
+Factores en los que nos enfocaremos en analizar:
+-	Complejidad temporal
+-	Necesidad de memoria y almacenamiento
+
+Modelo simplificado de computadora para el análisis:
+•	Medida de tiempo: cantidad de instrucciones o pasos de ejecución
+•	Medida de espacio: cantidad de posiciones de memoria referenciadas
+
+Tipos de análisis:
+*Extra = tipos de datos de entrada:
+1-Real (para medir el costo de una ejecución real)
+2-Aleatorio (para testear al algoritmo)
+3-Perverso (para verificar que el algoritmo puede manejar cualquier tipo de entrada)
+-	Empírico: someter al algoritmo implementado a pruebas y monitorear la performance, donde debe ser implementado correcta y completamente. Para poder comparar, los factores del contexto deben trascender las diferentes pruebas. Se debe usar el correcto conjunto de datos de entrada.
+-	Matemático: usar herramientas matemáticas para estudiar la performance de los algoritmos y caracterizarlos. Permite comparar algoritmos que realizan una misma tarea, predecir performance en nuevos ambientes, setear los parámetros para optimizar un algoritmo, etc.
+
+Pasos:
+1. Identificar las operaciones abstractas en que se basa el algoritmo para separar el análisis de la implementación (cantidad de operaciones vs tiempo de ejecución en milisegundos).
+2. Determinar cuáles operaciones son pasos significativos (los que determinan la performance/las partes que más se ejecutan)
+3. Definir el tipo de entrada que se presenta al algoritmo (en un caso promedio, usar entrada aleatoria; en el peor caso, usar entrada perversa)
+
+--------Clase 3--------
+AYED CLASE 3
+Usar carpetas ordenadas:
+-	~sandbox/ = lo uso de arenero/espacio de pruebas. Si se pierde la carpeta, no importa.
+-	~projects/ = lo uso para proyectos formales. Lo vivo backupeando, pusheando en Git, versionando, etc.
+-	~devel/ = herramientas para el software (librerías, por ej.)
+AYED debe ser tratado como un proyecto, entonces estará en PROJECTS.
+Cada línea de código debe tener un TEST, con tal de que tenga COVERAGE (del total del código escrito, cuantos test tengo sobre eso).
+Los test tienen muchas funciones, entre ellas correctitud(verificar que lo que hago es correcto) y evitar regresiones sobre el código.
+Dentro de /projects/ayed/ debe estar una carpeta llamada /src/ o source, donde va a estar el código fuente y todos los recursos que necesito para que el código corra en tiempo productivo.
+*Convention over configuration: si todos seguimos convenciones, configuramos mucho menos. Simplificamos las cosas con tal de que el resto entienda nuestra organización.
+-CODIFICAR TODO EN INGLÉS-
+Ejemplo de packaging:
+Src/
+	Main/
+		Resources/
+			Java/	
+				Ar/
+					Edu/
+						Austral/
+							Ayed/
+								Stack.java
+								Queue.java
+			Kotlin/
+
+
+
+
+
+	
+		Test/
+			Java/	
+				Ar/
+					Edu/
+						Austral/
+							Ayed/
+								StackTest.java
+
+
+Queue.java, StackTest.java y Stack.java tendrán como paquete declarado ar.edu.austral.ayed(dado que vienen de dichos paquetes), donde StackTest.java tendrá todas las pruebas que verifican que Stack.java cumple sus funciones.
+NO PODEMOS USAR DEPENDENCIAS LOCALES AL CODEAR, con tal de que el código sea universal. 
+Framework vs Librería:
+Framework te da muchas más cosas que una librería, que solo te da un utilitario (clases, variables, módulos, etc.).
+	
+
+
+--------Clase 4--------
+
+AYED CLASE 4
+Stacks:
+Estructura de datos que se asemeja a una pila de platos(VAN A TENER QUE TENER EL MISMO TIPO DE DATOS EN TODA LA PILA)
+Usos: cuando guardas tu correo en una pila en tu escritorio, usas un stack.
+Apilas el correo en la parte superior cuando llegan y agarras el correo de arriba para abajo cuando vas a leerlo.
+El historial de un navegador también funciona como un stack.
+Cualquier editor de texto funciona como stack, puesto que “stackea” modificaciones, pudiendo deshacer y rehacer los cambios, comportándose también como un stack.
+ 
+StackOverflowException: al hacer recursividad, “me llamo a mí mismo”, es decir, stackeo llamados hasta que se encuentra la condición de corte, donde se apaga el programa.
+DEFINICIONES
+Cliente: programa usando operaciones definidas en la interfaz
+Implementación: el código que implementa dichas operaciones
+Interfaz: descripción del tipo de datos, operaciones básicas.
+Interfaz e implementación separadas
+Ejemplo: Stack, queue, bag, priority queue, symbol table, union-find.
+Beneficios:
+-	El cliente no puede conocer los detalles de la implementación -> el cliente tiene muchas implementaciones para elegir
+-	La implementación … (completar con el slide)
+SE PREFIEREN LOS ERRORES DE COMPILACIÓN(compile-time) ANTES QUE LOS DE EJECUCIÓN(run-time).
+
+El hecho de deber tener el mismo tipo de datos en todo el stack es por cuestiones de organización de los datos.  
+El tipo de datos que contiene el stack es desconocido hasta la creación de este.
+[n++] vs [++n]
+Usa y luego aumenta vs aumenta y luego usa.
+//Completar FCS, RS, Iterable e iterator
+UN ITERATOR TIENE SOLO 2 MÉTODOS: hasnext() y next().
+
+
+--------Clase 5--------
+ADT = Abstract Data Type (Interfaces)
+¿Cómo es el ADT de Stack(responde a LIFO = LAST IN FIRST OUT)? 
+LAS INTERFACES SON ABSTRACTAS, puesto que no tienen implementación.
+Un ADT es un tipo de dato o estructura cuya implementación está oculta del usuario. Implementar un ADT no es muy distinto
+de implementar una librería de funciones como un set de metodos estáticos, pero difiere realmente en que asociamos el dato
+con las implementaciones de las funciones y ocultamos la implementación del cliente.
+Al usarlo, nos concentramos en operaciones especificadas en el API e ignoramos la representacion del dato.
+Al Implementarlo, nos concentramos en el dato y luego implmentamos operaciones en funcion de ese dato.
+
+
+Clase Stack(LIFO):
+push(E) //mete un elemento al Stack
+pop() // elimina el ultimo que ingreso
+isEmpty() 
+
+Clase Queue(FIFO):
+enqueue(E) //mete un elemento a la Queue
+dequeue() // elimina el primero que ingreso
+isEmpty()
+
+Como podemos ver, Queue y Stack son similares, pero difieren en su ADT.
+
+LAS ABSTRACCIONES EN JAVA SE ENUNCIAN CON LA KEYWORD Interface
+
+//BUSCAR ARREGLOS COVALIDANTES
+    |
+    |
+    V 
+Está relacionado con Generics, se usaban arreglos covalidantes porque no existian Generics antes.
+
+Stack <Animal> != Stack <Cat>; NO SE PUEDEN IGUALAR. Si se crea un Stack de gatos y luego lo quiero
+igualar a un Stack de animales, no puedo añadir perros, por ejemplo, dado que la implementación "por abajo"
+es de un stack de gatos.
+
+Generics se usa para definir el comportamiento de una implementación para cualquier tipo de dato, en términos abstractos.
+Seguir el KISS PRINCIPLE = Keep It Simple, Stupid.
+
+
+-----Clase 6-----
+LOS EJERCICIOS PARA EL PARCIAL SON MAYORMENTE EXTRAIDOS DEL LIBRO DE ALGORITHMS
+Entra todo hasta esta clase, es decir, incluyendo Linked Lists
+Linked Lists
+Es una estructura de datos recursiva que está vacía (null) o tiene una referencia a un nodo que tiene un item genérico
+y una referencia a una lista enlazada.
+
+Cada item de la lista tiene un nodo que tiene una referencia que apunta al siguiente.
+[n1] ->[n2] ->[n3] ->[n4] ....
+n es el nodo en cuestión, la flecha indica que apunta.
+
+Para insertar al principio, simplemente se tiene que agregar una referencia al oldFirst, transformando
+el nuevo nodo a First
+
+Para insertar al final, hay que hacer prácticamente lo mismo, que el oldLast referencie al nuevo last. (Completar con el slide)  
+
+NO HAY UNA ESTRUCTURA SILVER BULLET EN PROGRAMACIÓN
+
+Las inserciones y remociones arbitrarias se facilitarán con Double Linked Lists, pero por ahora no las veremos
+Por el momento, se resolverán
+
+------CLASE 7------
+En un stack, el orden de los métodos (si lo implmentamos con Linked  o array) es constante O(1), excepto el del push (constante amortizado usando array)
+PUEDEN LLEGAR A SER EVALUADOS MÉTODOS QUE NO VIMOS, como peek(), que revisa el elemento por salir y lo devuelve
+sin removerlo
+
+En Queue, el orden es:
+O(enqueue) = O(1) = O(dequeue) = O(resto de métodos)
+
+
+Ejercicio paréntesis:
+dado un string s, retornar true si está balanceado y false si no está balanceado
+Implementarlo en base a un stack
+
+Las Linked Lists son más eficientes porque los métodos terminan siendo de orden constante.
+
+------- REPASO PARA EL PARCIAL 27/4 ------
+//Euclid's algorithm for getting the GCD of two provided numbers:
+public static int gcd (int p, int q){
+	if (q==0) return p;
+	int r = p%q;
+	return gcd(q,r);}
+//It's a recursive algorithm.
+
+los ADT se usan como medios para:
+1- Especificar problemas precisamente, tomando la forma de APIs para uso de diversos clientes.
+2- Describir algoritmos y estructuras de datos como implementaciones del API.
+
+Se implementan distintos ADT por las diferencias en la performance para tareas específicas.
+NO HAY UNA ESTRUCTURA/ADT MEJOR QUE LA OTRA A NIVELES GENERALES, PERO SÍ A NIVELES ESPECÍFICOS. Es decir,
+depende para qué las uses.
+
+--------CLASE 9---------
+Árboles
+Estructuras arbóreas de las que de una punta se desprenden "hijos", siendo la de "arriba" el "padre".
+Tienen vértices(nodos) y aristas(punteros)
+En lenguaje de Linked Lists, los vértices son nodos y las aristas son los punteros (al siguiente o anterior)
+Cada camino que une 2 nodos se llama Path. Entre 2 nodos hay 1 solo path, porque cuando uno tiene más de 1 camino
+quiere decir que estamos hablando de otra estructura que se llama GRAFO (mucho más compleja)
+
+Conjunto de Árboles disjuntos = forest.
+En general, en Computer Science se designa una raíz para cada árbol. Los árboles sin raíz generalmente no se ven.
+Son estructuras recursivas
+Se puede dividir al árbol en diversos subárboles. Una vez designada la raíz, todos los de abajo son hijos.
+Los nodos que no tienen hijos se los conoce como hojas.
+Los nodos que tienen al menos un hijo se llaman nodos intermedios o nodos no terminales.
+Todos los nodos excepto la raíz tienen un padre.
+
+Tipos de árboles:
+	1. Ordenados:
+		El orden de los hijos está especificado en c/nodo
+	2. M-ary Trees:
+		Si cada nodo tiene que tener un número específico (M) de hijos, apareciendo en un orden específico,
+		entonces se trata de un M-ary Tree. Los más comunes son los binarios y ternarios
+	3. Árboles binarios:
+		El M-ary Tree más simple que hay. Es un árbol ordenado que consiste de 2 tipos de nodos: externos(sin hijos) 
+		e internos (con exactamente M = 2 hijos)
+		Como ambos hijos de cada nodo interno están ordenados, nos referimos a ellos como el hijo izquierdo y derecho respectivamente;
+		cada nodo interno tiene que tener tanto un hijo izquierdo como uno derecho, aunque uno o ambos pueden ser externos
+
+Como en los arboles binarios cada nodo tiene una referencia al de la izquierda y la derecha, es una implementación 
+análoga a la de una double linked list
+Se puede agregar una referencia al padre.
+
+Propiedades matemáticas:
+	* Un árbol binario con N nodos internos tiene N-1 nodos externos
+	* Un árbol binario con N nodos internos tienen 2N links: N-1 links a nodos internos y N+1 links a nodos externos
+	* Completar con el slide 
+	*
+	*
+	*
+
+El nivel de un nodo en un árbol es uno más que el nivel del padre (tomando la raíz como nivel 0)
+La altura del árbol es igual al nivel máximo del mismo
+El tamaño del path de un árbol es iguala  la suma de los niveles de todos los nodos del árbol
+Lo mismo se cumple para la longitud del path interno y externo, pero tomando los nodos correspondientes para c/caso
+(internos para path interno y externos para path externo)
+
+
+¿Cómo se recorre un árbol?
+Se lo llama transversarlo, pero se puede recorrer de 3 formas:
+	1. Preorder: visito el nodo y luego visito el subárbol a la izquierda, luego visito el de la derecha.
+	2. Inorder: izquierda, vuelvo a la raíz, derecha
+	3. Postorder: izquierda y derecha, luego vuelvo a la raíz
+Tener en cuenta que este proceso sirve con las divisiones a subárboles, y se repite
+
+---------CLASE 10------------
+BINARY SEARCH TREE (BST)
+Usamos una estructura (un ADT) llamada mapa (parecida a la built-in de Java), cuyos métodos más relevantes son 
+	-V get(K key)-> le paso una clave, me devuelve un valor
+	-void put(K key, V value)-> inserto clave y le asocio valor
+	-void remove(K key)-> remuevo la clave, elimina el valor implícitamente
+	-boolean contains(K key) -> me devuelve True si la clave que le paso existe, sino False
+Esta estructura se inicializa como Map(K,V), key value (parecido a los dicts de Python)
+Es una estructura asociativa. A partir de ahora nos vamos a centrar en tablas de asociación.
+1 clave corresponde a 1 solo valor
+
+También tiene otros métodos, como size() e isEmpty(), siendo el primero definible y el 2do inmutable (es método default de Java)
+
+---------CLASE 11------------
+BALANCED TREES
+Peor caso de un árbol desbalanceado: Linked Lists
+Orden de recorrido: N
+Para balancear un BST completamente necesitamos un algoritmo recursivo. En el mejor caso, será O(n)
+Es muy dificil usar rebalanceos globales en un BST por issues de performance, es muy costoso.
+Voy a hacer balanceos incrementales locales a los árboles/subárboles que voy recorriendo.
+*Inserte RotateLeft y RotateRight
+
+
+---------CLASE 12------------
+Árboles 2-3-4, balanceados
+Son árboles que son explicitamente vacíos o contienen uno de los sigueintes 3 tipos:
+2-node, 3-node, 4-node 
+Corresponden a la cantidad de claves por nodo
+
+-2: binario, el que venimos trabajando (1 clave)
+
+-3: ternario (3 hijos), tiene 2 claves, a la izquierda están todas las claves > k1, al
+medio todas las que están entre k1 y k2, y a la derecha todas las mayores a k2
+
+-4: cuaternario (4 hijos), 3 claves:
+	izq: todos los menores a k1
+	medio-izq: todos los que están entre k1 y k2
+	medio-derecha: todos los que están entre k2 y k3
+	derecha: todos los mayores a k3
